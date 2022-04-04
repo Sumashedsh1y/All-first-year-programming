@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <malloc.h>
+int main()
+{
+    int i,j,x,y;
+    printf("Vvedite kolichestvo strok:");
+    scanf("%d", &x);
+    printf("Vvedite kolichestvo stolbcov:");
+    scanf("%d", &y);
+    int **massiv;
+    massiv=(int **)calloc(x,sizeof(int *));
+    for (int i=0; i<x; i++)
+    massiv[i] = (int *) calloc(y,sizeof(float));
+    printf("Nachalniy massiv:\n");
+    for ( i=0 ; i < x ; i++ )
+    {
+        for ( j=0 ; j < y ; j++ )
+            massiv[i][j]=0+rand()%100;
+    }
+    for ( i=0 ; i < x ; i++ )
+    {
+        for ( j=0 ; j < y ; j++ ){
+            printf("%d\t", massiv[i][j]);
+        }
+       printf("\n");
+    }
+    printf("Izmenenniy massiv massiv:\n");
+    int **massiv2;
+    massiv2=(int **)calloc(y,sizeof(int *));
+    for (int i=0; i<y; i++)
+    massiv2[i] = (int *) calloc(x,sizeof(float));
+    for ( j=0 ; j < y ; j++ )
+    {
+        for ( i=0 ; i < x ; i++ )
+            massiv2[j][i]=massiv[i][y-j-1];
+    }
+    for ( j=0 ; j < y ; j++ )
+    {
+        for ( i=0 ; i < x ; i++ ){
+            printf("%d\t", massiv2[j][i]);
+        }
+       printf("\n");
+    }
+    for ( i=0 ; i < x ; i++ )
+        free(massiv[i]);
+    free(massiv);
+    for ( j=0 ; j < y ; j++ )
+        free(massiv2[j]);
+    free(massiv2);
+    return 0;
+}

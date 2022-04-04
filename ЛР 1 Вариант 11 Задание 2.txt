@@ -1,0 +1,23 @@
+Code: С Программа: Code::Blocks
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+ int main()
+{
+    float R1, R2, R11,R22,z;
+    printf("R1=");
+    scanf("%f", &R1);
+    printf("R2=");
+    scanf("%f", &R2);
+    printf("esli soedinenie posledovatelnoe vvedite 1, esli parralelnoe vvedite 2\n");
+    scanf("%f", &z);
+    if (z==1)
+    {printf("Posledovatelnoe soedinenie=");
+    R11=R1+R2;
+    printf("%f", R11);}
+    else
+    {printf("Parralelnoe soedinenie=");
+    R22=(R1*R2)/(R1+R2);
+    printf("%f", R22);}
+    return 0;
+}

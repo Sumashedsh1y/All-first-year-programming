@@ -1,0 +1,29 @@
+#include <SFML/Graphics.hpp>
+
+int main()
+{
+    sf::RenderWindow window(sf::VideoMode(500, 500), "SFML");
+    sf::CircleShape shape(200.f);
+    shape.setPosition(50, 50);
+    const sf::Color colors[7] = {sf::Color::White, sf::Color::Red, sf::Color::Green, sf::Color::Blue, sf::Color::Magenta, sf::Color::Cyan, sf::Color::Black};
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear(sf::Color(125,125,125));
+        window.draw(shape);
+        window.display();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+            {
+                shape.setFillColor(colors[rand()%7]);
+            }
+    }
+
+    return 0;
+}
+

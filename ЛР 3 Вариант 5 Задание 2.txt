@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+void massiv(int* z, int a);
+int main()
+{
+int a;
+printf("Scolko elementov v massive:\n");
+scanf("%d", &a);
+int *z;
+z = (int*)calloc(a, sizeof(int));
+printf("Vvedite elemnty massiva:\n");
+for (int i = 0; i < a; i++)
+{
+    scanf("%d", &z[i]);
+}
+    massiv(z, a);
+    for (int i = 0; i < a; i++)
+{
+    printf("%d\t", z[i]);
+}
+    return 0;
+}
+void massiv(int* z, int a)
+{
+    int max = 0;
+    for (int i = 0; i < a; i++)
+{
+    if (z[i] > max)
+    max = z[i];
+}
+    for (int i = 0; i < a; i++)
+{
+    if (z[i] < max)
+    {
+        z[i]=-z[i];
+    }
+}
+}

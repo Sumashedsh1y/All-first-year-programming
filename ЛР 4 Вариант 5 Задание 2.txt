@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define size 100
+int main()
+{
+    FILE *f1, *f2;
+    char z[size], *a;
+    int i=0;
+    f1=fopen("D:\\CodeBlocks\\text.txt", "r");
+    if (f1==NULL)
+    {
+        fgets(stderr,"%s", "File not found.\n");
+        exit(0);
+    }
+    while (!feof(f1))
+    {
+        fgets(&z, size, f1);
+        if (strlen(z) > i) i = strlen(z);
+    }
+    rewind(f1);
+    printf("Samaya dlinnaya stroka:\n");
+    while (!feof(f1))
+    {
+        fgets(&z, size, f1);
+        if (strlen(z) == i)
+        {
+            printf("%s\n", z);
+        }
+    }
+    rewind(f1);
+    f2=fopen("D:\\CodeBlocks\\result.txt","w+");
+        if (f2==NULL)
+    {
+        fprintf(stderr,"%s", "File not found.\n");
+        exit(0);
+    }
+    while (!feof(f1))
+    {
+        fgets(&z, size, f1);
+        if (strlen(z) == i)
+        {
+            strset(z,'\0');
+            char *g = "\n";
+            strcat(z,g);
+        }
+        if (strlen(z) <= i)
+        fprintf(f2,"%s",z);
+
+    }
+    rewind(f2);
+    fclose(f2);
+    fclose(f1);
+    return 0;
+}

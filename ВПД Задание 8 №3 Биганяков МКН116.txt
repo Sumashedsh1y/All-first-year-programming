@@ -1,0 +1,31 @@
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    int i,k,p;
+    cout << "Введите количество элементов: ";
+    cin >> k;
+    cout << "Введите элементы: ";
+    int z[k];
+    for (i=0;i<k;i++)
+        cin >> z[i];
+    vector <int> z2;
+    for (i=0;i<k;i++)
+        if (z[i]%2==0)
+            z2.push_back(z[i]);
+    if (z2.size()!=0)
+    {
+        auto minZ=min_element(z2.begin(),z2.end());
+        auto maxZ=max_element(z2.begin(),z2.end());
+        cout << "Минимальное значение:" << *minZ << "\nМаксимальное значение:" << *maxZ << endl;
+    }
+    else
+    {
+        int minZ=0;
+        int maxZ=0;
+        cout << "Минимальное значение:" << minZ << "\nМаксимальное значение:" << maxZ << endl;
+    }
+}

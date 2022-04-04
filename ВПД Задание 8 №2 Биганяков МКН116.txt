@@ -1,0 +1,19 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    vector <int> Z = {1, 2, 3, 4, 5, 7, 3, 2, 7};
+    for(const auto &number : Z)
+        if ((number%5==0)&(number%4!=0))
+            break;
+        else
+            cout << number << ' ';
+    cout << "\n";
+    for(const auto &number : Z)
+        if (number == *(Z.end()-1))
+            break;
+        else
+            cout << number << ' ';
+}

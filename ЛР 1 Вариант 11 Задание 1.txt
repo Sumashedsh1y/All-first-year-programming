@@ -1,0 +1,17 @@
+Code: C Программа: Code::Blocks
+#include <stdio.h>
+#include <math.h>
+int main() {
+    float a, b, c, s, p, p2;
+    printf ("\nA=");
+    scanf ("%f", &a);
+    printf ("\nB=");
+    scanf ("%f", &b);
+    printf ("\nC=");
+    scanf ("%f", &c);
+    p=a+b+c;
+    p2=p/2;
+    s=sqrt(p2*(p2-a)*(p2-b)*(p2-c));
+    printf("\nS=%f", s);
+    return 0;
+}

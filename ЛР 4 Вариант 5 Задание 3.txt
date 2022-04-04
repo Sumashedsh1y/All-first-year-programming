@@ -1,0 +1,92 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+struct NOTE
+    {
+        char familiya[20];
+        char name[20];
+        int nomer;
+        char group[10];
+        int bday;
+    };
+struct NOTE blocknote[8];
+struct NOTE sortirovka;
+void vvod();
+void vivod();
+void sort();
+int i=0,j,colichestvo=0;
+int main()
+{
+    while(1)
+    {
+        switch(menu())
+        {
+        case 1:vvod();break;
+        case 2:vivod();break;
+        case 3:sort();break;
+        case 4:return 0;break;
+            default:printf("Nevernoe znachenie\n");
+        }
+    }
+    return 0;
+}
+int menu()
+{
+    int z;
+    printf("\nMenu:\n");
+    printf("1.Vvod\n");
+    printf("2.Vyvod\n");
+    printf("3.Sortirovka po date rozdenia\n");
+    printf("4.Exit\n");
+    printf("Vvedite znachenie? - \n");
+    scanf("%d",&z);
+    return z;
+}
+void vvod()
+{
+    int i;
+    do {
+        printf("Zapis_%d:\n", colichestvo+1);
+        printf("Vvedite familiyu\n");
+        fflush(stdin);
+        gets(blocknote[colichestvo].familiya);
+        printf("Vvedite imya\n");
+        fflush(stdin);
+        gets(blocknote[colichestvo].name);
+        printf("Vvedite nomer\n");
+        scanf("%d",&blocknote[colichestvo].nomer);
+        printf("Vvedite gruppu\n");
+        scanf("%s",&blocknote[colichestvo].group);
+        printf("Vvedite den rozdiniya\n");
+        scanf("%d",&blocknote[colichestvo].bday);
+        colichestvo++;
+        printf("Prekratit vvod? 1-No,0-Yes\n");
+        scanf("%d",&i);
+    }while(i);
+}
+void vivod()
+{
+    if(colichestvo==0)
+        printf("Zapisey net\n");
+    else
+        for(i=0;i<colichestvo;i++)
+        {
+
+        printf("Familiya : %s\n",blocknote[i].familiya);
+        printf("Imya : %s\n",blocknote[i].name);
+        printf("Nomer : %d\n",blocknote[i].nomer);
+        printf("Gruppa : %s\n", blocknote[i].group);
+        printf("Den rozdeniya : %d\n",blocknote[i].bday);
+    }
+}
+void sort()
+{
+for (i=0; i<colichestvo-1; i++)
+        for (j=i; j<colichestvo; j++)
+            if (blocknote[i].bday>blocknote[j].bday)
+            { sortirovka=blocknote[i];
+               blocknote[i]=blocknote[j];
+               blocknote[j]=sortirovka;
+            }
+}

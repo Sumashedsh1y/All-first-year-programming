@@ -1,0 +1,21 @@
+Code: C Программа: Code::Blocks
+#include <math.h>
+#include <stdio.h>
+#include <locale.h>
+int Deposit(float* w,float A,float B,float C)
+{
+    *w=(A)*(B)/100*(C)/365;
+}
+float main()
+{
+    float a, b, c, p;
+    printf("Vvedite summu vklada:\t");
+    scanf("%f", &a);
+    printf("Vvedite procent stavku:\t");
+    scanf("%f", &b);
+    printf("Vvedite srok:\t");
+    scanf("%f", &c);
+    Deposit(&p,a,b,c);
+    printf("Dohod raven:%f", p);
+    return 0;
+}

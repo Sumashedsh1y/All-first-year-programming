@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#define size 1000
+int main()
+{
+    int o, z=0;
+    char s[size];
+    printf("Vvedite stroku:\t");
+    while (strcmp(s+strlen(s)-4, "quit") != 0)
+    {
+        z=0;
+        gets(s);
+        for (o=0;o<size-1; o++)
+        {
+            if((s[o]==' ')&&(s[o+1]==' '))
+            {
+                z++;
+            }
+        if (strcmp(s+strlen(s)-4, "quit") == 0) exit(z);
+}
+    printf("Vvedennaya stroka:");
+    puts(s);
+    printf("Chislo dvoinyh probelov:%d\n", z);
+    printf("\n");
+    }
+}

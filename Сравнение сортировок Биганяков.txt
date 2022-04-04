@@ -1,0 +1,79 @@
+#include <math.h>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+void selectionSort(int *mas, int size)
+{
+  int min, z;
+  for (int i = 0; i < size - 1; i++)
+  {
+    min = i;
+    for (int j = i + 1; j < size; j++)
+    {
+      if (mas[j] < mas[min])
+        min = j;
+    }
+    z = mas[i];
+    mas[i] = mas[min];
+    mas[min] = z;
+  }
+}
+void bubbleSort(int *mas, int size)
+{
+    int z;
+    for (int i = 0; i < size - 1; i++)
+    {
+        for (int j = (size - 1); j > i; j--)
+        {
+        if (mas[j - 1] > mas[j])
+        {
+            z = mas[j - 1];
+            mas[j - 1] = mas[j];
+            mas[j] = z;
+      }
+    }
+  }
+}
+void QSRT(int *mas, int size)
+{
+    int comp (const int *i, const int *j)
+    {
+        return *i - *j;
+    }
+    qsort(mas, 100, sizeof(int), comp);
+}
+int main()
+{
+     int mas[99];
+  for (int i = 0; i < 100; i++)
+  {
+      mas[i]=rand();
+  }
+    printf("\n");
+    clock_t start1 = clock();
+    selectionSort(mas,100);
+    for (int i = 0; i<100; i++)
+    printf("%d ", mas[i]);
+    printf("\n");
+    clock_t end1 = clock();
+    double sec1 = (double)(end1 - start1) / CLOCKS_PER_SEC;
+    printf("\n");
+    clock_t start2 = clock();
+    bubbleSort(mas,100);
+    for (int i = 0; i<100; i++)
+    printf("%d ", mas[i]);
+    printf("\n");
+    clock_t end2 = clock();
+    double sec2 = (double)(end2 - start2) / CLOCKS_PER_SEC;
+    printf("\n");
+    clock_t start3 = clock();
+    QSRT(mas, 100);
+    for (int i = 0; i<100; i++)
+    printf("%d ", mas[i]);
+    printf("\n");
+    clock_t end3 = clock();
+    double sec3 = (double)(end3 - start3) / CLOCKS_PER_SEC;
+    printf("\nSelectionSort Time: %f \n", sec1);
+    printf("BubbleSort Time: %f \n", sec2);
+    printf("Qsort Time: %f \n", sec3);
+}

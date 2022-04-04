@@ -1,0 +1,64 @@
+#include <math.h>
+#include <stdio.h>
+#include <time.h>
+ int SearchNOD(int a,int b)
+ {
+     int q=0;
+     if (a>b)
+        for (int z=1;z<=b;z++)
+        {
+            if ((a % z == 0) && (b % z == 0))
+                q=z;
+        }
+    if (a<b)
+        for (int z=1;z<=a;z++)
+        {
+            if ((a % z == 0) && (b % z == 0))
+                q=z;
+        }
+    return(q);
+ }
+ int EvclidIter(int a, int b)
+ {
+   int c;
+   while (b) {
+      c = a % b;
+      a = b;
+      b = c;
+   }
+   return (a);
+ }
+ int EvclidRecur(int a, int b)
+{
+    if (a==b)
+        return a;
+    else
+    if (a>b)
+        return EvclidRecur(a-b, b);
+    else
+        return EvclidRecur(a, b-a);
+}
+int main(int a,int b)
+{
+    printf("Vvedite dva chisla:\n");
+    scanf("%d%d", &a, &b);
+    printf("\n");
+    clock_t start1 = clock();
+    printf("%d\t", SearchNOD(a,b));
+    clock_t end1 = clock();
+    double sec1 = (double)(end1 - start1) / CLOCKS_PER_SEC;
+    printf("Time: %f ", sec1);
+    printf("\n");
+    clock_t start2 = clock();
+    printf("%d\t",EvclidIter(a,b));
+    clock_t end2 = clock();
+    double sec2 = (double)(end2 - start2) / CLOCKS_PER_SEC;
+    printf("Time: %f ", sec2);
+    printf("\n");
+    clock_t start3 = clock();
+    printf("%d\t",EvclidRecur(a,b));
+    clock_t end3 = clock();
+    double sec3 = (double)(end3 - start3) / CLOCKS_PER_SEC;
+    printf("Time: %f ", sec3);
+
+}

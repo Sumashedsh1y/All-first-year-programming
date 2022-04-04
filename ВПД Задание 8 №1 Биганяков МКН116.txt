@@ -1,0 +1,24 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a,p,i,x=0;
+    setlocale(LC_ALL, "Rus");
+    cout << "Введите количество цифр потока: ";
+    cin >> a;
+    int z[a];
+    z[a-1]=0;
+    cout << "Введите последовательно значения, учитите последнее всегда равно 0:\n";
+    for (int i=0;i<a-1;i++)
+        cin >> z[i];
+    vector <int> vectorPolozitelniy;
+    for (i=0;i<a;i++)
+        if (z[i]%2==0)
+        {
+           vectorPolozitelniy.push_back(z[i]);
+        }
+    cout << "Положительные числа: ";
+    for (p=0;p<vectorPolozitelniy.size();p++)
+        cout << vectorPolozitelniy[p] << " ";
+}

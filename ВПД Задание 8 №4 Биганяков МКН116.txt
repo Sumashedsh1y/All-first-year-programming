@@ -1,0 +1,38 @@
+#include <cmath>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    setlocale(LC_ALL, "Rus");
+    int i,k,N,t,y,sum,SA,*mediana,minmoda;
+    cout << "Введите количество элементов: ";
+    cin >> k;
+    cout << "Введите длину значений: ";
+    cin >> N;
+    int z[k];
+    for (i=0;i<k;i++)
+        z[i]=pow(10,N-1)+rand()%(int)(pow(10,N)-1);
+    sort(z,z+k);
+    for  (i=0;i<k;i++)
+        cout << z[i] << "\t";
+    sum = accumulate(z,z+k,0);
+    SA = sum/k;
+    mediana = lower_bound(z,z+(k/2)-1,SA);
+    y=pow(10,N+1);
+    for (i=0;i<k;i++)
+    {
+        t=count(z,z+k,z[i]);
+        if (t<y)
+            y=t;
+    }
+    for (i=0;i<k;i++)
+    {
+        t=count(z,z+k,z[i]);
+        if (t==y)
+            minmoda=z[i];
+    }
+    cout  << "\n" << "Средне арифметическое:" << SA << "\n" << "Нижняя медиана: " << *mediana << "\n" << "Минимальная мода: " << minmoda << endl;
+}

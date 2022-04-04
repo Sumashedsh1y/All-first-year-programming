@@ -1,0 +1,48 @@
+Code: C Программа: Code::Blocks
+#include <stdio.h>
+int massiv(int* z, int a)
+{
+    int i,N,M;
+    printf("Vvedite granici massiva:");
+    scanf("%d %d", &N,&M);
+    for (i=0; i<a ; i++)
+    {
+        z[i]=N+rand()%M;
+    }
+}
+void sortirovka (int* z, int L, int R)
+{
+    int i = L, j = R;
+    int tmp, centr = z[(L+R)/2];
+
+    while (i <= j)
+    {
+        while (z[i] > centr) i++;
+        while (z[j] < centr) j--;
+        if (i <= j)
+        {
+            if (z[i] < z[j])
+            {
+                tmp = z[i]; z[i] = z[j]; z[j] = tmp;
+            }
+            i++; j--;
+        }
+    };
+
+    if (L < j)
+        sortirovka (z, L, j);
+    if (i < R)
+        sortirovka (z, i, R);
+}
+int main()
+{
+    int a,i;
+    printf("Vvedite razmer massiva:");
+    scanf("%d", &a);
+    int *z;
+    z=(int*)calloc(a, sizeof(int));
+    massiv(z, a);
+    sortirovka(z,0,a-1);
+    for (i=0;i<a;i++)
+        printf("%d\t", z[i]);
+}

@@ -1,0 +1,24 @@
+Code: С Программа: Code::Blocks
+#include <stdio.h>
+#include <locale.h>
+#include <math.h>
+int main()
+{
+    int a1, a2,z;
+    a2=0;
+    printf("VVEDITE CHISLO\n");
+    scanf("\n%i", &a1);
+    while (a1>0)
+    {
+        z=a1%3;
+        a2=a2*10+z;
+        a1=a1/3;
+    }
+    while (a2>0)
+    {
+        z=a2%10;
+        printf("%i", z);
+        a2=a2/10;
+    }
+    return 0;
+}

@@ -1,0 +1,19 @@
+Code: C Программа: Code::Blocks
+#include <math.h>
+#include <stdio.h>
+#include <locale.h>
+#define Vtetraidr(x) (((x)*(x)*(x))*sqrt(2))/(12)
+#define Vkub(x) ((x)*(x)*(x))
+int main()
+{
+    float a,a2,h,S,V,V1,V2;
+    printf("Vvedite storonu kuba:");
+    scanf("%f", &a);
+    printf("Vvedite storonu tetraedra:");
+    scanf("%f", &a2);
+    V1=Vkub(a);
+    V2=Vtetraidr(a2);
+    V=V1-V2;
+    printf("Obyom raven:%f", V);
+    return 0;
+}
